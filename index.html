@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Think tanks chilenos en tiempos turbulentos (2019–2023) – UAH</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="min-h-screen font-inter text-[#1C1C1C] bg-page overflow-hidden">
+  <!-- Marco general -->
+  <div class="h-screen w-screen border border-[color:var(--ink-20)] flex flex-col p-1 gap-1 rounded-lg">
+
+    <!-- HEADER -->
+    <header class="h-[15%] flex items-center justify-between px-6 bg-header rounded-lg">
+      <!-- Título -->
+      <div class="flex-1 min-w-0">
+        <div class="inline-block px-3 py-1 rounded-sm bg-[color:var(--orange)] text-white text-xs font-semibold tracking-wide mb-2">
+          Think tanks chilenos en tiempos turbulentos (2019–2023)
+        </div>
+        <h1 id="activeCategory" class="text-3xl md:text-4xl font-bold leading-tight title-ink">
+          Análisis por densidad
+        </h1>
+      </div>
+
+      <!-- Íconos de think tanks -->
+      <div class="flex-2 flex justify-center">
+        <div id="ttIconsContainer" class="rounded-lg p-2 border border-[color:var(--ink-15)] shadow-soft bg-white/85">
+          <div id="ttIcons" class="flex items-center gap-2 h-16 overflow-x-auto scrollbar-hide">
+            <!-- íconos via JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Total -->
+      <div class="flex-1 flex justify-end">
+        <div id="totalCapsule" class="pill-total">
+          <span class="pill-kicker">Total</span>
+          <span id="totalCount" class="pill-number">0</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- CHART CENTRAL -->
+    <section class="h-[52%] rounded-lg p-4 relative bg-panel border border-[color:var(--ink-10)]">
+      <div id="centralChart" class="w-full h-full"></div>
+      <!-- Tooltip único (estilo del afiche) -->
+      <div id="tooltip" class="absolute hidden tooltip z-50"></div>
+    </section>
+
+    <!-- CHART INFERIOR -->
+    <section class="h-[23%] rounded-lg p-4 relative bg-panel border border-[color:var(--ink-10)]">
+      <div class="absolute top-2 left-1/2 -translate-x-1/2 z-10">
+        <div class="badge-soft">
+          <span class="text-[12px] text-[color:var(--ink-70)]">Total de publicaciones en el periodo = </span>
+          <span id="globalTotal" class="font-semibold text-[color:var(--ink-90)]">17,418</span>
+        </div>
+      </div>
+      <div id="bottomChart" class="w-full h-full mt-8"></div>
+    </section>
+
+    <!-- FOOTER / CONTROLES -->
+    <footer class="h-[10%] flex items-center justify-between px-6 bg-footer rounded-lg">
+      <!-- Reproducción -->
+      <div class="flex items-center gap-3">
+        <button id="playBtn" class="btn-round play">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <button id="prevBtn" class="btn-round ghost">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M15 18l-6-6 6-6v12z"/></svg>
+        </button>
+        <button id="nextBtn" class="btn-round ghost">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M9 6l6 6-6 6V6z"/></svg>
+        </button>
+      </div>
+
+      <!-- Subtítulo -->
+      <div class="flex-1 text-center">
+        <p class="text-sm md:text-base font-semibold text-[color:var(--ink-80)]">Demo para el departamento de Sociología · Universidad Alberto Hurtado</p>
+      </div>
+
+      <!-- Filtros -->
+      <div class="flex items-center gap-2">
+        <div class="flex gap-2">
+          <button id="dimOrientation" class="dimension-btn btn chip chip--primary">Orientación política</button>
+          <button id="dimType" class="dimension-btn btn chip">Tipo de think tank</button>
+        </div>
+        <div id="categoryFilters" class="flex gap-2 overflow-x-auto scrollbar-hide"></div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
