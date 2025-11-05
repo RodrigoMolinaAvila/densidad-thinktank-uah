@@ -159,7 +159,7 @@ body{
 
 /* ===== Labels sobre barras ===== */
 .bar-label{
-  font-size: 15px;
+  font-size: 14px;
   fill: var(--ink-90);
   text-anchor: middle;
   font-weight: 700;
@@ -199,7 +199,7 @@ body{
 }
 
 #ttIcons .icon-container{
-  width: 5.5rem;        /* antes 3rem aprox (w-12) */
+  width: 3.5rem;        /* antes 3rem aprox (w-12) */
   height: 4.5rem;       /* idem (h-12) */
   padding: 8px;         /* un poco más de respiración */
   border-radius: 12px;  /* suaviza el bloque */
